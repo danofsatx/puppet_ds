@@ -10,7 +10,7 @@ class Puppet::Provider::Rbac_api_ds < Puppet::ResourceApi::SimpleProvider
 
   CONFIGFILE = "#{Puppet.settings[:confdir]}/classifier.yaml"
 
-  confine :exists => CONFIGFILE
+  
 
   # This is autoloaded by the master, so rescue the permission exception.
   @config = YAML.load_file(CONFIGFILE) rescue {}
@@ -100,24 +100,24 @@ class Puppet::Provider::Rbac_api_ds < Puppet::ResourceApi::SimpleProvider
     end
   end
 
-  def self.post_response(endpoint, request_body)
-    limit = 10
-    uri   = make_uri(endpoint)
-    https = build_auth(uri)
-    Puppet.debug "RBAC API: POST #{uri.request_uri}"
-
-    request = Net::HTTP::Post.new(uri.request_uri)
-    request['Content-Type'] = "application/json"
-    request.body = request_body.to_json
-    res = https.request(request)
-    case res
-    when Net::HTTPSuccess then
-      res
-    when Net::HTTPRedirection then
-      fetch_redirect(res['location'], limit - 1)
-    else
-      raise Puppet::Error, "An RBAC API error occured: HTTP #{res.code}, #{res.to_hash.inspect}"
-    end
-  end
+  # def self.post_response(endpoint, request_body)
+  #   limit = 10
+  #   uri   = make_uri(endpoint)
+  #   https = build_auth(uri)
+  #   Puppet.debug "RBAC API: POST #{uri.request_uri}"
+  #
+  #   request = Net::HTTP::Post.new(uri.request_uri)
+  #   request['Content-Type'] = "application/json"
+  #   request.body = request_body.to_json
+  #   res = https.request(request)
+  #   case res
+  #   when Net::HTTPSuccess then
+  #     res
+  #   when Net::HTTPRedirection then
+  #     fetch_redirect(res['location'], limit - 1)
+  #   else
+  #     raise Puppet::Error, "An RBAC API error occured: HTTP #{res.code}, #{res.to_hash.inspect}"
+  #   end
+  # end
 
 end
