@@ -10,17 +10,17 @@ class Puppet::Provider::PuppetDs::PuppetDs < Puppet::ResourceApi::SimpleProvider
     ds = Puppet::Provider::Rbac_api_ds::get_response('/ds').collect
     result = {}
     if ds == result
-      result.add(:ensure, 'absent')
+      result[:ensure]='absent'
     else
-      result.add(:ensure, 'present' )
+        result[:ensure]='present'
     end
 
-    result.add('json_data', ds)
+    result[:json_data] = ds
     #result.add('json_data', canonicalize(ds))
-    result.add('name', 'ds')
+    result[:name] = ds
 
       context.type.attributes.each do |attr_name, attr|
-        result.add(attr_name, canonicalize(ds.get(attr_name)))
+        result[attr_name] = canonicalize(ds.get(attr_name)))
           #result[attr_name] = match(ds, attr, attr_name));
       end
 
