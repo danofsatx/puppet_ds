@@ -9,10 +9,10 @@ class Puppet::Provider::PeRbacDs::PeRbacDs < Puppet::ResourceApi::SimpleProvider
     context.notice("Getting '/ds' ")
     ds = Puppet::Provider::Rbac_api_ds::get_response('/ds').collect
     result = {}
-    if ds == result
-      result[:ensure] = "absent"
-    else
+    if ds.include?({:user_display_name_attr})
       result[:ensure] = "present"
+    else
+      result[:ensure] = "abent"
     end
 
     result[:json_data] = ds
