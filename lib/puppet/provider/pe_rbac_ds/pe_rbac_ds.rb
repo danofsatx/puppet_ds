@@ -1,7 +1,7 @@
 # Implementation for the pe_rbac_ds type using the Resource API.
 require 'puppet/resource_api/simple_provider'
 require 'puppet/provider/rbac_api_ds'
-require 'pry'
+#require 'pry'
 
 class Puppet::Provider::PeRbacDs::PeRbacDs < Puppet::ResourceApi::SimpleProvider
 
