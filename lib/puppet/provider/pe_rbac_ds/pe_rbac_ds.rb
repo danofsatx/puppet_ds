@@ -9,7 +9,7 @@ class Puppet::Provider::PeRbacDs::PeRbacDs < Puppet::ResourceApi::SimpleProvider
     context.notice("Getting '/ds' ")
     ds = Puppet::Provider::Rbac_api_ds::get_response('/ds').collect
     result = {}
-    if ds.include?({:user_display_name_attr})
+    if ds.include?(:user_display_name_attr)
       result[:ensure] = "present"
     else
       result[:ensure] = "abent"
