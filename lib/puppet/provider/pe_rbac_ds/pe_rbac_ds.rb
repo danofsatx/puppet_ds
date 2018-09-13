@@ -10,14 +10,14 @@ class Puppet::Provider::PeRbacDs::PeRbacDs < Puppet::ResourceApi::SimpleProvider
     ds = Puppet::Provider::Rbac_api_ds::get_response('/ds').collect
     result = {}
     if ds == result
-      result[:ensure]='absent'
+      result["ensure"]='absent'
     else
-        result[:ensure]='present'
+      result["ensure"]='present'
     end
 
-    result[:json_data] = ds
+    result["json_data"] = ds
     #result.add('json_data', canonicalize(ds))
-    result[:name] = ds
+    result["name"] = ds
 
       context.type.attributes.each do |attr_name, attr|
         result[attr_name] = canonicalize(ds.get(attr_name)))
