@@ -4,8 +4,8 @@ require 'puppet/provider/rbac_api_ds'
 # Implementation for the puppet_ds type using the Resource API.
 class Puppet::Provider::PuppetDs::PuppetDs < Puppet::ResourceApi::SimpleProvider
   def get(context)
-    context.notice("Getting '#{name}'")
-    ds = Puppet::Provider::Rbac_api_ds::get_response("/#{name}").collect
+    context.notice("Getting '/ds' ")
+    ds = Puppet::Provider::Rbac_api_ds::get_response('/ds').collect
     result = {}
     if ds == result
       result.add(:ensure, 'absent')
@@ -27,15 +27,15 @@ class Puppet::Provider::PuppetDs::PuppetDs < Puppet::ResourceApi::SimpleProvider
   end
 
   def create(context, name, should)
-    context.notice("Creating '#{name}' with #{should.inspect}")
+    context.notice("Creating '/ds' with #{should.inspect}")
   end
 
   def update(context, name, should)
-    context.notice("Updating '#{name}' with #{should.inspect}")
+    context.notice("Updating '/ds' with #{should.inspect}")
   end
 
   def delete(context, name)
-    context.notice("Deleting '#{name}'")
-    Puppet::Provider::Rbac_api_ds::delete_response("/#{name}")
+    context.notice("Deleting '/ds' ")
+    Puppet::Provider::Rbac_api_ds::delete_response("/ds")
   end
 end
