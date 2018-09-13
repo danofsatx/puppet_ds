@@ -5,6 +5,5 @@
 # @example
 #   include puppet_ds::ds_tets
 class puppet_ds {
-
- fail('do not compile')
+  fail("The ${module_name} does not provide public classes')
 }
