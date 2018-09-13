@@ -9,9 +9,7 @@ class Puppet::Provider::Rbac_api_ds < Puppet::ResourceApi::SimpleProvider
   require 'yaml'
 
   CONFIGFILE = "#{Puppet.settings[:confdir]}/classifier.yaml"
-
   
-
   # This is autoloaded by the master, so rescue the permission exception.
   @config = YAML.load_file(CONFIGFILE) rescue {}
   @config = @config.first if @config.class == Array
