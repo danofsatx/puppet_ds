@@ -1,9 +1,9 @@
+# Implementation for the pe_rbac_ds type using the Resource API.
 require 'puppet/resource_api/simple_provider'
 require 'puppet/provider/rbac_api_ds'
 require 'pry'
-# Implementation for the puppet_ds type using the Resource API.
 
-class Puppet::Provider::PuppetDs::PuppetDs < Puppet::ResourceApi::SimpleProvider
+class Puppet::Provider::PeRbacDs::PeRbacDs < Puppet::ResourceApi::SimpleProvider
 
   def get(context)
     context.notice("Getting '/ds' ")

@@ -1,7 +1,7 @@
 require 'puppet/resource_api'
 
 Puppet::ResourceApi.register_type(
-  name: 'puppet_ds',
+  name: 'pe_rbac_ds',
   docs: <<-EOS,
       This type provides Puppet with the capabilities to manage ...
     EOS
