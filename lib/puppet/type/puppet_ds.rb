@@ -17,5 +17,9 @@ Puppet::ResourceApi.register_type(
       desc:      'The name of the resource you want to manage.',
       behaviour: :namevar,
     },
+    json:        {
+      type:      'Hash',
+      desc:      'The JSON value of the currrent rbac_api_v1_directory settings',
+    },
   },
 )
