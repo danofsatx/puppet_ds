@@ -19,10 +19,10 @@ class Puppet::Provider::PeRbacDs::PeRbacDs < Puppet::ResourceApi::SimpleProvider
     #result.add('json_data', canonicalize(ds))
     result[:name] = "ds"
 
-      context.type.attributes.each do |attr_name, attr|
-        result[attr_name] = canonicalize(ds.get(attr_name)))
-          #result[attr_name] = match(ds, attr, attr_name));
-      end
+      # context.type.attributes.each do |attr_name, attr|
+      #   result[attr_name] = canonicalize(ds.get(attr_name)))
+      #     #result[attr_name] = match(ds, attr, attr_name));
+      # end
 
     defined?(munge) ? munge(result) : result
       #return result;
