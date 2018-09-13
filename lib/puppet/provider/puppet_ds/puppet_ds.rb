@@ -11,7 +11,7 @@ class Puppet::Provider::PuppetDs::PuppetDs < Puppet::ResourceApi::SimpleProvider
       result.add(:ensure, 'absent')
     else
       result.add(:ensure, 'present' )
-    endpoint
+    end
 
     result.add('json_data', ds)
     #result.add('json_data', canonicalize(ds))
