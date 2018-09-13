@@ -13,11 +13,13 @@ Puppet::ResourceApi.register_type(
       default: 'present',
     },
     name:        {
-      type:      'String',
+      type:      'Enum["ds"]',
       desc:      'The name of the resource you want to manage.',
       behaviour: :namevar,
+
     },
-    json:        {
+    json_data:        {
+      #canonicalize resource api.
       type:      'Hash',
       desc:      'The JSON value of the currrent rbac_api_v1_directory settings',
     },
