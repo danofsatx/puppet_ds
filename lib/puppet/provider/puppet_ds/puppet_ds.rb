@@ -3,7 +3,7 @@ require 'puppet/provider/rbac_api_ds'
 
 # Implementation for the puppet_ds type using the Resource API.
 class Puppet::Provider::PuppetDs::PuppetDs < Puppet::ResourceApi::SimpleProvider
-  def get(_context)
+  def get(context)
     context.notice("Getting '#{name}'")
     ds = Puppet::Provider::Rbac_api_ds::get_response("/#{name}").collect
     result = {}
