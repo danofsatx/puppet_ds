@@ -1,3 +1,4 @@
+#
 require 'puppet/resource_api'
 
 Puppet::ResourceApi.register_type(
@@ -19,7 +20,7 @@ Puppet::ResourceApi.register_type(
 
     },
     json_data:        {
-      #canonicalize resource api.
+      # canonicalize resource api.
       type:      'Hash',
       desc:      'The JSON value of the currrent rbac_api_v1_directory settings',
     },

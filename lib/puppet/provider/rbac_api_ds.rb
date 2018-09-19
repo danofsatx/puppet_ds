@@ -1,17 +1,23 @@
+#
 require 'puppet/resource_api/simple_provider'
 
 # Implementation for the puppet_ds type using the Resource API.
 class Puppet::Provider::Rbac_api_ds < Puppet::ResourceApi::SimpleProvider
+  #
   require 'net/https'
   require 'uri'
   require 'json'
   require 'openssl'
   require 'yaml'
 
-  CONFIGFILE = "#{Puppet.settings[:confdir]}/classifier.yaml"
-  
+  CONFIGFILE = "#{Puppet.settings[:confdir]}/classifier.yaml".freeze
+
   # This is autoloaded by the master, so rescue the permission exception.
-  @config = YAML.load_file(CONFIGFILE) rescue {}
+  @config = begin
+              YAML.load_file(CONFIGFILE)
+            rescue
+              {}
+            end
   @config = @config.first if @config.class == Array
 
   def self.build_auth(uri)
@@ -31,7 +37,7 @@ class Puppet::Provider::Rbac_api_ds < Puppet::ResourceApi::SimpleProvider
   end
 
   def self.fetch_redirect(uri_str, limit = 10)
-    raise ArgumentError, 'HTTP redirection has reached the limit beyond 10' if limit == 0
+    raise ArgumentError, 'HTTP redirection has reached the limit beyond 10' if limit.zero?
 
     uri   = make_uri(uri_str, nil)
     https = build_auth(uri)
@@ -55,12 +61,11 @@ class Puppet::Provider::Rbac_api_ds < Puppet::ResourceApi::SimpleProvider
     https = build_auth(uri)
     Puppet.debug "RBAC API: GET #{uri.request_uri}"
 
-
     request = Net::HTTP::Get.new(uri.request_uri)
-    request['Content-Type'] = "application/json"
+    request['Content-Type'] = 'application/json'
     res = https.request(request)
 
-    if res.code != "200"
+    if res.code != '200'
       raise Puppet::Error, "An RBAC API error occured: HTTP #{res.code}, #{res.body}"
     end
     res_body = JSON.parse(res.body)
@@ -74,11 +79,11 @@ class Puppet::Provider::Rbac_api_ds < Puppet::ResourceApi::SimpleProvider
     Puppet.debug "RBAC API: DELETE #{uri.request_uri}"
 
     request = Net::HTTP::Put.new(uri.request_uri)
-    request['Content-Type'] = "application/json"
+    request['Content-Type'] = 'application/json'
     request.body = '{}'
     res = https.request(request)
 
-    if res.code != "200"
+    if res.code != '200'
       raise Puppet::Error, "An RBAC API error occured: HTTP #{res.code}, #{res.body}"
     end
   end
@@ -89,11 +94,11 @@ class Puppet::Provider::Rbac_api_ds < Puppet::ResourceApi::SimpleProvider
     Puppet.debug "RBAC API: PUT #{uri.request_uri}"
 
     request = Net::HTTP::Put.new(uri.request_uri)
-    request['Content-Type'] = "application/json"
+    request['Content-Type'] = 'application/json'
     request.body = request_body.to_json
     res = https.request(request)
 
-    if res.code != "200"
+    if res.code != '200'
       raise Puppet::Error, "An RBAC API error occured: HTTP #{res.code}, #{res.body}"
     end
   end
@@ -117,5 +122,4 @@ class Puppet::Provider::Rbac_api_ds < Puppet::ResourceApi::SimpleProvider
   #     raise Puppet::Error, "An RBAC API error occured: HTTP #{res.code}, #{res.to_hash.inspect}"
   #   end
   # end
-
 end
