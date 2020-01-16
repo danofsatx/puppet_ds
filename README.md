@@ -3,29 +3,33 @@
 
 ## Puppet Directory Service
 
-The Puppet_ds module encapsulates usage of the rbac_api/v1/ds end point [https://puppet.com/docs/pe/2017.3/rbac_api_v1_directory.html#put-ds](https://puppet.com/docs/pe/2017.3/rbac_api_v1_directory.html#put-ds)for configuring usage of a Directory Service (DS) for Role Based Access and Control(RBAC) of the Puppet Console.
+The Puppet_ds module encapsulates usage of the rbac_api/v1/ds end point [https://puppet.com/docs/pe/2018.1/rbac_api_v1_directory.html#put-ds](https://puppet.com/docs/pe/2018.1/rbac_api_v1_directory.html#put-ds)for configuring usage of a Directory Service (DS) for Role Based Access and Control(RBAC) of the Puppet Console.
 
 The v 0.1.0, version of this is Puppet Task based only.
 
-#### Table of Contents
+### Table of Contents
 
-1. [Description](#description)
-2. [Setup - The basics of getting started with puppet_ds](#setup)
-    * [What puppet_ds affects](#what-puppet_ds-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with puppet_ds](#beginning-with-puppet_ds)
-3. [Usage - Configuration options and additional functionality](#usage)
-4. [Limitations - OS compatibility, etc.](#limitations)
-5. [Development - Guide for contributing to the module](#development)
+- [puppet_ds](#puppetds)
+  - [Puppet Directory Service](#puppet-directory-service)
+    - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Setup](#setup)
+    - [What puppet_ds affects **OPTIONAL**](#what-puppetds-affects-optional)
+    - [Setup Requirements **OPTIONAL**](#setup-requirements-optional)
+    - [Beginning with puppet_ds](#beginning-with-puppetds)
+  - [Usage](#usage)
+  - [Limitations](#limitations)
+  - [Development](#development)
+    - [ToDo](#todo)
+  - [Release Notes/Contributors/Etc. **Optional**](#release-notescontributorsetc-optional)
 
 ## Description
-The module provides capabilities to use [https://puppet.com/docs/pe/2017.3/rbac_api_v1_directory.html#put-ds] (https://puppet.com/docs/pe/2017.3/rbac_api_v1_directory.html#put-ds) to get, set and test the directory services with a `Puppet Task` or by directly using the scripts provided as tasks during bootstrap and install of the Puppet Enterprise server.
+
+The module provides capabilities to use [<https://puppet.com/docs/pe/2018.1/rbac_api_v1_directory.html#put-ds]> (<https://puppet.com/docs/pe/2018.1/rbac_api_v1_directory.html#put-ds)> to get, set and test the directory services with a `Puppet Task` or by directly using the scripts provided as tasks during bootstrap and install of the Puppet Enterprise server.
 
 ## Setup
 
 ### What puppet_ds affects **OPTIONAL**
-
-
 
 ### Setup Requirements **OPTIONAL**
 
@@ -47,7 +51,7 @@ Review the data scheme of the DS json Puppet requires.
        "group_rdn" : [ "maybe", "Str" ],
        "connect_timeout" : [ "maybe", "Int" ],
        "(optional-key :start_tls)" : [ "maybe", "Bool" ],
-      "user_display_name_attr" : "Str",
+       "user_display_name_attr" : "Str",
        "hostname" : "Str",
        "base_dn" : "Str",
        "user_lookup_attr" : "Str",
@@ -70,9 +74,7 @@ Review the data scheme of the DS json Puppet requires.
 
 ## Usage
 
-Currently the module only supports `Puppet Tasks` see [https://puppet.com/docs/bolt/0.x/bolt_running_tasks.html](https://puppet.com/docs/bolt/0.x/bolt_running_tasks.html) for more information on running the provided tasks.
-
-
+Currently the module only supports `Puppet Tasks` see <[https://puppet.com/docs/bolt/latest/bolt_running_tasks.html](https://puppet.com/docs/bolt/latest/bolt_running_tasks.html)> for more information on running the provided tasks.
 
 ## Limitations
 
@@ -84,8 +86,7 @@ Pull requests welcome.
 
 ### ToDo
 
-* Create puppet_ds resources equivalent to all tasks.
-
+- Create puppet_ds resources equivalent to all tasks.
 
 ## Release Notes/Contributors/Etc. **Optional**
 
