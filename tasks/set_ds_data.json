@@ -1,7 +1,7 @@
 {
   "puppet_task_version": 1,
   "supports_noop": false,
-  "description": "Task to update DS data for the API as a single json object https://puppet.com/docs/pe/2017.3/rbac_api_v1_directory.html#put-ds. To test this and ldap connectivity you can use a public LDAP (http://techsmruti.com/online-ldap-test-server/ for example) the data for this is included in the task",
+  "description": "Task to update DS data for the API as a single json object https://puppet.com/docs/pe/2018.1/rbac_api_v1_directory.html#put_ds. To test this and ldap connectivity you can use a public LDAP (https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server/ for example) the data for this is included in the task",
   "parameters": {
     "name": {
       "description": "Used to refer to DS elsewhere in the UI. Example: 'My awesome AD server' ",
