@@ -6,5 +6,5 @@
 #   include puppet_ds::ds_tets
 class puppet_ds {
 
- fail('do not compile')
+  fail('do not compile')
 }
